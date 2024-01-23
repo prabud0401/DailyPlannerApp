@@ -11,8 +11,12 @@
   var currentDate = dayjs().format("dddd, MMMM D, YYYY");
 $("#currentDay").text("Today is " + currentDate);
 
+  // Wait for the document to be ready
+
 var timeBlockContainer = $(".time-block-container");
 var businessHours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"];
+
+// Function to generate timeblocks
 
 function generateTimeblocks() {
   var currentHour = dayjs().hour();
@@ -33,6 +37,7 @@ function generateTimeblocks() {
     }
   }
 }
+// Function to handle click event on timeblocks
 
 function handleTimeblockClick() {
   timeBlockContainer.on("click", ".time-block", function () {
@@ -40,6 +45,7 @@ function handleTimeblockClick() {
     textArea.prop("readonly", false);
   });
 }
+// Function to handle click event on save button
 
 function handleSaveButtonClick() {
   timeBlockContainer.on("click", ".saveBtn", function () {
@@ -50,6 +56,7 @@ function handleSaveButtonClick() {
     textArea.prop("readonly", true);
   });
 }
+// Function to retrieve events from local storage and display them
 
 function displaySavedEvents() {
   for (var i = 0; i < businessHours.length; i++) {
@@ -60,11 +67,12 @@ function displaySavedEvents() {
     }
   }
 }
-
+// Call the functions
 generateTimeblocks();
 handleTimeblockClick();
 handleSaveButtonClick();
 displaySavedEvents();
+// Function to handle scroll event
 
 $(window).scroll(function () {
   if ($(window).scrollTop() > 0) {
